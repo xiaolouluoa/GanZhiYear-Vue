@@ -14,19 +14,21 @@ const TG_MAP = {
 }
 // 地支
 const DZ = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥']
+// 太岁根据地支来确定，与太岁相对的方位为破岁方位
+// 太岁从立春(2.3~2.5)开始而非正月初一
 const DZ_MAP = {
-  子: { shengxiao: '鼠', wuxing: '水', yinyang: '阳' },
-  丑: { shengxiao: '牛', wuxing: '土', yinyang: '阴' },
-  寅: { shengxiao: '虎', wuxing: '木', yinyang: '阳' },
-  卯: { shengxiao: '兔', wuxing: '木', yinyang: '阴' },
-  辰: { shengxiao: '龙', wuxing: '土', yinyang: '阳' },
-  巳: { shengxiao: '蛇', wuxing: '火', yinyang: '阴' },
-  午: { shengxiao: '马', wuxing: '火', yinyang: '阳' },
-  未: { shengxiao: '羊', wuxing: '土', yinyang: '阴' },
-  申: { shengxiao: '猴', wuxing: '金', yinyang: '阳' },
-  酉: { shengxiao: '鸡', wuxing: '金', yinyang: '阴' },
-  戌: { shengxiao: '狗', wuxing: '土', yinyang: '阳' },
-  亥: { shengxiao: '猪', wuxing: '水', yinyang: '阴' },
+  子: { shengxiao: '鼠', wuxing: '水', yinyang: '阳', taisui: '正北', posui: 1 },
+  丑: { shengxiao: '牛', wuxing: '土', yinyang: '阴', taisui: '东北偏北', posui: 2 },
+  寅: { shengxiao: '虎', wuxing: '木', yinyang: '阳', taisui: '东北偏东', posui: 3 },
+  卯: { shengxiao: '兔', wuxing: '木', yinyang: '阴', taisui: '正东', posui: 4 },
+  辰: { shengxiao: '龙', wuxing: '土', yinyang: '阳', taisui: '东南偏东', posui: 5 },
+  巳: { shengxiao: '蛇', wuxing: '火', yinyang: '阴', taisui: '东南偏南', posui: 6 },
+  午: { shengxiao: '马', wuxing: '火', yinyang: '阳', taisui: '正南', posui: -1 },
+  未: { shengxiao: '羊', wuxing: '土', yinyang: '阴', taisui: '西南偏南', posui: -2 },
+  申: { shengxiao: '猴', wuxing: '金', yinyang: '阳', taisui: '西南偏西', posui: -3 },
+  酉: { shengxiao: '鸡', wuxing: '金', yinyang: '阴', taisui: '正西', posui: -4 },
+  戌: { shengxiao: '狗', wuxing: '土', yinyang: '阳', taisui: '西北偏西', posui: -5 },
+  亥: { shengxiao: '猪', wuxing: '水', yinyang: '阴', taisui: '西北偏北', posui: -6 },
 }
 // 五行
 const WX = ['金', '水', '木', '火', '土']
