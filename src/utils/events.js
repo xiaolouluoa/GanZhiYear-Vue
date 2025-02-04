@@ -1,5 +1,12 @@
 import { tableData } from './data'
-import { handleTiangan, handleDizhi, handleShengxiao, handleWuxing, handleJiazi, handleTaisui } from './handler'
+import {
+  handleTiangan,
+  handleDizhi,
+  handleShengxiao,
+  handleWuxing,
+  handleJiazi,
+  handleTaisui,
+} from './handler'
 
 // 清空按钮点击事件
 const clearTable = () => {
@@ -27,7 +34,7 @@ const updateTable = (year) => {
   jiaziStr += `地支五行: ${dz_wx}` + '<br />'
   jiaziStr += `太岁方位: ${taisui}` + '<br />'
   jiaziStr += `破岁方位: ${posui}` + '<br />'
-  jiaziStr += (jiazi ? year + '是甲子年<br />' : '')
+  jiaziStr += jiazi ? year + '是甲子年<br />' : ''
   jiaziStr += `上一个甲子年: ${prev}` + '<br />'
   jiaziStr += `下一个甲子年: ${next}`
 

@@ -20,21 +20,26 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="date-picker">
-      <div class="block">
-        <!-- 日期组件 -->
-        <el-date-picker
-          v-model="year"
-          type="year"
-          placeholder="选择年份"
-          format="YYYY"
-          value-format="YYYY"
-        />
+    <div>
+      <div class="date-picker">
+        <div class="block">
+          <!-- 日期组件 -->
+          <el-date-picker
+            v-model="year"
+            type="year"
+            placeholder="选择年份"
+            format="YYYY"
+            value-format="YYYY"
+          />
+        </div>
+        <div class="block">
+          <el-button type="danger" @click="clearTable">清空</el-button>
+        </div>
       </div>
     </div>
     <div v-show="tableData.length">
       <!-- 显示结果 -->
-      <ShowTable :tableData="tableData" @clear-table="clearTable" />
+      <ShowTable :tableData="tableData" />
     </div>
   </div>
 </template>
@@ -49,7 +54,7 @@ onMounted(() => {
 .date-picker .block {
   padding: 30px 0;
   text-align: center;
-  border-right: solid 1px var(--el-border-color);
+  /* border-right: solid 1px var(--el-border-color); */
   flex: 1;
 }
 .date-picker .block:last-child {
