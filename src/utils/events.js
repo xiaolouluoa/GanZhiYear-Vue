@@ -22,17 +22,22 @@ const updateTable = (year) => {
   const { jiazi, prev, next } = handleJiazi(yearInt)
   const { taisui, posui } = handleTaisui(dizhi)
 
+  let jiaziStr = ''
+  jiaziStr += `天干五行: ${tg_wx}` + '<br />'
+  jiaziStr += `地支五行: ${dz_wx}` + '<br />'
+  jiaziStr += `太岁方位: ${taisui}` + '<br />'
+  jiaziStr += `破岁方位: ${posui}` + '<br />'
+  jiaziStr += (jiazi ? year + '是甲子年<br />' : '')
+  jiaziStr += `上一个甲子年: ${prev}` + '<br />'
+  jiaziStr += `下一个甲子年: ${next}`
+
   // 更新tableData
-  tableData.value = tableData.value.filter((item) => item.year !== year)
+  tableData.value = tableData.value.filter((item) => parseInt(item.year, 10) !== yearInt)
   tableData.value.unshift({
-    year: year,
-    ganzhi: `${tiangan}${dizhi}${shengxiao}` + '年',
-    tg_wx: tg_wx,
-    dz_wx: dz_wx,
+    year: yearInt,
+    ganzhi: `${tiangan}${dizhi}${shengxiao}年`,
     taisui: taisui,
-    posui: posui,
-    jiaziStr:
-      (jiazi ? year + '是甲子年，' : '') + '上一个甲子年：' + prev + '，下一个甲子年：' + next,
+    jiaziStr: jiaziStr,
   })
   // 存储到本地
   localStorage.setItem('tableData', JSON.stringify(tableData.value))

@@ -5,12 +5,9 @@
       <el-table-column prop="year" label="年份" width="100"></el-table-column>
       <el-table-column prop="ganzhi" label="干支纪年" width="100"></el-table-column>
       <el-table-column prop="taisui" label="太岁" width="100"></el-table-column>
-      <el-table-column prop="posui" label="破岁" width="100"></el-table-column>
-      <el-table-column prop="tg_wx" label="天干五行" width="150"></el-table-column>
-      <el-table-column prop="dz_wx" label="地支五行" width="150"></el-table-column>
-      <el-table-column label="甲子年" width="100">
+      <el-table-column label="操作" width="100">
         <template #default="scope">
-          <el-tooltip trigger="click" placement="right" :content="scope.row.jiaziStr">
+          <el-tooltip trigger="click" placement="right" :content="scope.row.jiaziStr" raw-content>
             <el-button style="border: none">查看</el-button>
           </el-tooltip>
         </template>
