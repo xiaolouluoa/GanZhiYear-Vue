@@ -6,6 +6,7 @@ import {
   handleWuxing,
   handleJiazi,
   handleTaisui,
+  handleLichun,
 } from './handler'
 
 // 清空按钮点击事件
@@ -24,15 +25,16 @@ const updateTable = (year) => {
   // 计算天干、地支、生肖
   const tiangan = handleTiangan(yearInt)
   const dizhi = handleDizhi(yearInt)
-  const shengxiao = handleShengxiao(dizhi)
-  const { tg_wx, dz_wx } = handleWuxing(tiangan, dizhi)
+  const shengxiao = handleShengxiao(yearInt)
+  const { tg_wx, dz_wx } = handleWuxing(yearInt)
   const { jiazi, prev, next } = handleJiazi(yearInt)
-  const { taisui, posui } = handleTaisui(dizhi)
+  const { taisui, posui } = handleTaisui(yearInt)
+  const lichun = handleLichun(yearInt)
 
   let jiaziStr = ''
   jiaziStr += `天干五行: ${tg_wx}` + '<br />'
   jiaziStr += `地支五行: ${dz_wx}` + '<br />'
-  jiaziStr += `太岁方位: ${taisui}` + '<br />'
+  jiaziStr += `太岁方位: ${taisui}(注意:太岁以立春为界而非正月初一)` + '<br />'
   jiaziStr += `破岁方位: ${posui}` + '<br />'
   jiaziStr += jiazi ? year + '是甲子年<br />' : ''
   jiaziStr += `上一个甲子年: ${prev}` + '<br />'
@@ -43,6 +45,7 @@ const updateTable = (year) => {
   tableData.value.unshift({
     year: yearInt,
     ganzhi: `${tiangan}${dizhi}${shengxiao}年`,
+    lichun: lichun,
     taisui: taisui,
     jiaziStr: jiaziStr,
   })

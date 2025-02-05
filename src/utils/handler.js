@@ -1,4 +1,5 @@
-import { TG, TG_MAP, DZ, DZ_MAP, WX, WX_MAP } from './const'
+import { TG, TG_MAP, DZ, DZ_MAP } from './const'
+import calendar from 'js-calendar-converter/src/index'
 
 // 天干
 const handleTiangan = (year) => {
@@ -9,11 +10,14 @@ const handleDizhi = (year) => {
   return DZ[(year - 4) % 12]
 }
 // 生肖
-const handleShengxiao = (dizhi) => {
+const handleShengxiao = (year) => {
+  let dizhi = handleDizhi(year)
   return DZ_MAP[dizhi].shengxiao
 }
 // 生肖五行
-const handleWuxing = (tiangan, dizhi) => {
+const handleWuxing = (year) => {
+  let tiangan = handleTiangan(year)
+  let dizhi = handleDizhi(year)
   let tg_wx = TG_MAP[tiangan].yinyang + TG_MAP[tiangan].wuxing
   let dz_wx = DZ_MAP[dizhi].yinyang + DZ_MAP[dizhi].wuxing
   return { tg_wx, dz_wx }
@@ -34,12 +38,24 @@ const handleJiazi = (year) => {
   }
   return { jiazi, prev, next }
 }
-
-const handleTaisui = (dizhi) => {
-  let dz = DZ_MAP[dizhi]
-  let taisui = dz.taisui
-  let posui = [...Object.values(DZ_MAP)].filter((item) => dz.posui + item.posui === 0)[0].taisui
+// 太岁
+const handleTaisui = (year) => {
+  let dizhi = handleDizhi(year)
+  let dzObj = DZ_MAP[dizhi]
+  let taisui = dzObj.taisui
+  let posui = [...Object.values(DZ_MAP)].filter((item) => dzObj.posui + item.posui === 0)[0].taisui
   return { taisui, posui }
 }
-
-export { handleTiangan, handleDizhi, handleShengxiao, handleWuxing, handleJiazi, handleTaisui }
+// 立春日期范围 2.3-2.5
+const handleLichun = (year) => {
+  let lichun = ''
+  for (let i = 3; i < 6; i++) {
+    let lunar = calendar.solar2lunar(year, 2, i)
+    if (lunar.isTerm && lunar.Term === '立春') {
+      lichun += '2-' + i
+      break
+    }
+  }
+  return lichun
+}
+export { handleTiangan, handleDizhi, handleShengxiao, handleWuxing, handleJiazi, handleTaisui, handleLichun }
