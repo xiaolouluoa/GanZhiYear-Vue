@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, watch } from 'vue'
+import { ElDatePicker, ElButton, ElText } from 'element-plus'
 
 import { year, tableData } from './utils/data'
 import { clearTable, updateTable } from './utils/events'
@@ -35,6 +36,9 @@ onMounted(() => {
         <div class="block">
           <el-button type="danger" @click="clearTable">清空</el-button>
         </div>
+      </div>
+      <div>
+        <el-text class="mx-1" type="warning">注意:太岁以立春为界而非正月初一</el-text>
       </div>
     </div>
     <div v-show="tableData.length">

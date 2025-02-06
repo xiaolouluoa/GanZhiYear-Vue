@@ -34,7 +34,7 @@ const updateTable = (year) => {
   let jiaziStr = ''
   jiaziStr += `天干五行: ${tg_wx}` + '<br />'
   jiaziStr += `地支五行: ${dz_wx}` + '<br />'
-  jiaziStr += `太岁方位: ${taisui}(注意:太岁以立春为界而非正月初一)` + '<br />'
+  jiaziStr += `太岁方位: ${taisui}` + '<br />'
   jiaziStr += `破岁方位: ${posui}` + '<br />'
   jiaziStr += jiazi ? year + '是甲子年<br />' : ''
   jiaziStr += `上一个甲子年: ${prev}` + '<br />'

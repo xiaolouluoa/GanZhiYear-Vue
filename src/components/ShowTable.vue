@@ -9,7 +9,6 @@
       <el-table-column label="操作" width="100" fixed="right">
         <template #default="scope">
           <el-tooltip trigger="click" placement="left" :content="scope.row.jiaziStr" raw-content>
-            <!-- <el-button style="border: none">查看</el-button> -->
             <el-text type="info" style="cursor: pointer">查看</el-text>
           </el-tooltip>
         </template>
@@ -19,6 +18,7 @@
 </template>
 
 <script setup>
+import { ElTable, ElTableColumn, ElTooltip, ElText } from 'element-plus';
 // 接收 props 参数
 const props = defineProps({
   tableData: {
