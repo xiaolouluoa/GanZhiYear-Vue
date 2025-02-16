@@ -52,7 +52,7 @@ const handleLichun = (year) => {
   for (let i = 3; i < 6; i++) {
     let lunar = calendar.solar2lunar(year, 2, i)
     if (lunar.isTerm && lunar.Term === '立春') {
-      lichun += '2-' + i
+      lichun += '2-' + i + '（' + lunar.IMonthCn + lunar.IDayCn + '）'
       break
     }
   }

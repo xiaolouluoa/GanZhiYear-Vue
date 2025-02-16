@@ -4,7 +4,7 @@
     <el-table :data="tableData" height="300" style="width: 100%">
       <el-table-column prop="year" label="年份" width="80"></el-table-column>
       <el-table-column prop="ganzhi" label="干支纪年" width="100"></el-table-column>
-      <el-table-column prop="lichun" label="立春" width="100"></el-table-column>
+      <el-table-column prop="lichun" label="立春" width="130"></el-table-column>
       <el-table-column prop="taisui" label="太岁" width="100"></el-table-column>
       <el-table-column label="操作" width="100" fixed="right">
         <template #default="scope">
@@ -20,7 +20,7 @@
 <script setup>
 import { ElTable, ElTableColumn, ElTooltip, ElText } from 'element-plus';
 // 接收 props 参数
-const props = defineProps({
+defineProps({
   tableData: {
     type: Array,
     default: () => [],

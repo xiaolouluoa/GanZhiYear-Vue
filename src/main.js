@@ -1,6 +1,7 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
+// import App from './App_2.vue'
 import App from './App.vue'
 
 // 引入element-plus组件
